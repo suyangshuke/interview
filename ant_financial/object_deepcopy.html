@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var syb=Symbol('obj');
+		var person={
+			name:'sy',
+			say:function(){
+				console.log('hi');
+			},
+			ok:syb,
+			un:undefined
+		}
+	//第一种方法：JSON
+	//当值为function、Symbol、undefined时，在转换过程中被忽略。
+		var copy=JSON.parse(JSON.stringify(person));
+	//第二种方法：自己编写函数
+		function deepCopy(obj){
+			var result=Array.isArray(obj)?[]:{};
+			for(var key in obj){
+				if(obj.hasOwnProperty(key)){
+					if(typeof obj[key]==="object"){
+						result[key]=deepCopy(obj[key]);
+					}else{
+						result[key]=obj[key];
+					}
+				}
+			}
+			return result;
+		}
+
+		var copy2=deepCopy(person);
+		console.log(copy);
+		console.log(copy2);
+	</script>
+</body>
+</html>
