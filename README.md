@@ -3,9 +3,9 @@
 
 蚂蚁金服：ant_financial
 
-function.html:两个函数运行结果
-object_deepcopy.html:对象的深复制
-push_bracket.html:字符括号匹配
+function.html:两个函数运行结果;
+object_deepcopy.html:对象的深复制;
+push_bracket.html:字符括号匹配;
 
 字节跳动：zijietiaodong
 
