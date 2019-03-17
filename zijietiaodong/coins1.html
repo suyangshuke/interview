@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function coins(money){
+			var moneys=1024-money;
+			var coins=[];
+			while(moneys>0){
+				[moneys,coins]=coins_(moneys,coins);
+			}
+			var sum=coins.reduce(function(pre,cur){
+				return pre+cur;
+			})
+			return sum;
+		}
+		console.log(coins(200));
+
+		function coins_(num,result){
+			switch (true){
+				case num>=64:
+					result.push(parseInt(num/64));
+					num=parseInt(num%64);
+					break;
+				case num>=16 && num<64:
+					result.push(parseInt(num/16));
+					num=parseInt(num%16);
+					break;
+				case  num>=4 && num<16:
+					result.push(parseInt(num/4));
+					num=parseInt(num%4);
+					break;
+				case num<4:
+					result.push(num);
+					num=parseInt(num%1);
+					break;
+			}
+			return [num,result];
+		}
+	</script>
+</body>
+</html>

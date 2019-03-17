@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function MinCoinChange(coins){
+			this.coins=coins;
+			this.makeChange=function(money){
+				var amount=1024-money;
+				var change=[];
+				var total=0;
+				for(var i=coins.length;i>=0;i--){
+					var coin=coins[i];
+					while(total+coin<=amount){
+						change.push(coin);
+						total+=coin;
+					}
+				}
+				return change.length;
+			}
+		}
+		var MinCoinChange=new MinCoinChange([1,4,16,64]);
+		console.log(MinCoinChange.makeChange(200));
+	</script>
+</body>
+</html>
